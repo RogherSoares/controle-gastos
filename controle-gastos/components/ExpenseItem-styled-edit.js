@@ -13,12 +13,12 @@ import {
 } from 'react-native';
 
 //Componente principal
-export default HomeScreen() {
+export default function HomeScreen() {
     //Estado para os campode do formularios
     const [descricao, setDescricao] = useState(''); //Descriçao do gasto
     const [valor, setValor] = useState('');  //valor do gasto
     const [gastos, setGastos] = useState([]); //Lista de gastos
-    const [edtandoId, setEditandoId] = useState(null); //id do item sendo editado
+    const [editandoId, setEditandoId] = useState(null); //id do item sendo editado
 
     //Função para adicionar um novo gasto ou atualizar um exsitente
     const adicionarOuAtualizarGasto = () => {
@@ -29,4 +29,15 @@ export default HomeScreen() {
         }
     }
 
+    //Validação para verificar valor numerico no campo valor
+        if (isNaN(valor)) {
+            Alert.alert('Erro', 'Por favor, insira um valor numérico válido.');
+            return;
+        }
+
+        if (editandoId) {
+            const gastoAtualizado = gastos.map(item =>
+            //Atualiza o gasto existente com base no id
+            item.id === editandoId ? { ...item, descricao, valor: parseFloat(valor).toFixed(2) } : item); //Atualiza valores
+        }
 }
