@@ -64,5 +64,12 @@ export default function HomeScreen() {
             setDescricao(''); //Limpa o campo descrição
             setValor(''); //Limpa o campo valor
         }    
-    };     
+    }; 
+    
+    //Função para preencher os campos do formulário com os dados do item a ser editado
+    const editarGasto = (item) => {
+        setDescricao(item.descricao); //Preenche  descrição
+        setValor(item.valor);         //Preenche  valor
+        setEditandoId(item.id);       //Armazena o ID
+    };
 }
