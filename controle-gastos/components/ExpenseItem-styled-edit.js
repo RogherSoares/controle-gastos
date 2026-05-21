@@ -27,9 +27,8 @@ export default function HomeScreen() {
             Alert.alert('Erro', 'Por favor, preencha todos os campos.');
             return;
         }
-    }
 
-    //Validação para verificar valor numerico no campo valor
+        //Validação para verificar valor numerico no campo valor
         if (isNaN(valor)) {
             Alert.alert('Erro', 'Por favor, insira um valor numérico válido.');
             return;
@@ -52,5 +51,18 @@ export default function HomeScreen() {
         }
         //Limpa os campos do formulário
         setDescricao('');
-        setValor('');       
-};
+        setValor(''); 
+    };
+
+    //Funçaõ para remover o gasto da lista
+    const removerGasto = (id) => {
+        setGastos(gastos.filter(item => item.id !== id)); //Remove o gasto com base no id
+
+        //Verifica se o item a ser removido está sendo editado. Se tiver, cancela a opereção
+        if (editandoId === id) {
+            setEditandoId(null); //sai do modo de edição
+            setDescricao(''); //Limpa o campo descrição
+            setValor(''); //Limpa o campo valor
+        }    
+    };     
+}
