@@ -39,5 +39,18 @@ export default function HomeScreen() {
             const gastoAtualizado = gastos.map(item =>
             //Atualiza o gasto existente com base no id
             item.id === editandoId ? { ...item, descricao, valor: parseFloat(valor).toFixed(2) } : item); //Atualiza valores
+            setGastos(gastoAtualizado); //Atualiza o estado
+            setEditandoId(null); //Limpa o estado de edição
+        } else {
+            //Criação de um novo gasto
+            const novoGasto = {
+                id: Date.now().toString(), //Gera um id único
+                descricao,  //Descrição informada
+                valor: parseFloat(valor).toFixed(2) //Valor formatado
+            };
+            setGastos([...gastos, novoGasto]); //Adiciona o novo gasto à lista
         }
-}
+        //Limpa os campos do formulário
+        setDescricao('');
+        setValor('');       
+};
