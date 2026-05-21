@@ -80,6 +80,23 @@ export default function HomeScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Controle de Gastos</Text>
+
+            {/* Campo para entrada da descrição */}
+            <TextInput 
+                style={styles.input}
+                placeholder="Descrição do gasto"
+                value={descricao}
+                onChangeText={setDescricao}
+            />
+            {/* Campo para entrada do valor */}
+            <TextInput 
+                style={styles.input}
+                keyboardType="numeric"
+                placeholder="Valor do gasto"
+                value={valor}
+                onChangeText={setValor}
+            />
+
         </View>
     );
 }
@@ -90,6 +107,9 @@ const styles = StyleSheet.create({
         
     },
     title: {
-        
+
+    },
+    input: {
+
     }
 })
