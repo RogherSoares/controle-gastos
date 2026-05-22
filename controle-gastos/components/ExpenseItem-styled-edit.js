@@ -97,6 +97,48 @@ export default function HomeScreen() {
                 onChangeText={setValor}
             />
 
+            {/* Botão para adicionar o valor a lista */}
+            <TouchableOpacity style={styles.button} onPress={adicionarOuAtualizarGasto}>
+                <Text style={styles.buttonText}>
+                    {editandoId ? 'Atualizar Gasto' : 'Adicionar Gasto'}
+                </Text>
+            </TouchableOpacity>
+
+            {/* Lista de gastos exibidos na FlatList */}
+            <FlatList
+                data={gastos} //Fonte de dados
+                keyExtractor={item => item.id} //Identificador único
+                renderItem={({ item }) => (
+                    <View style={styles.itemContainer}>
+                        {/* Exibe a descrição e valor */}
+                        <Text style={styles.item}>
+                            {item.descricao} - R$ {item.valor}
+                        </Text>
+                        {/* Ações de edição e remoção */}
+                        <View style={styles.actions}>
+                            {/* Botão para editar o gasto */}
+                            <TouchableOpacity onPress={() => editarGasto(item)} style={styles.editButton}>
+                                <Text style={styles.actionText}>
+                                    Editar
+                                </Text>
+                            </TouchableOpacity>
+                            {/* Botão para remover o gasto */}
+                            <TouchableOpacity onPress={() => removerGasto(item)} style={styles.deletButton}>
+                                <Text style={styles.actionText}>
+                                    Excluir
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        {/* Exibe o total gasto atualizado */}                                
+                        <Text style={styles.total}>
+                                Total Gasto: R$ {totalGasto}
+                        </Text>
+                        
+                    </View>
+                )}
+            />
+
         </View>
     );
 }
@@ -111,5 +153,23 @@ const styles = StyleSheet.create({
     },
     input: {
 
+    },
+    button: {
+
+    },
+    buttonText: {
+
+    },
+    actions: {
+
+    },
+    editButton: {
+
+    },
+    actionText: {
+
+    },
+    deletButton: {
+
     }
-})
+});
