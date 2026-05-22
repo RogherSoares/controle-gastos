@@ -123,7 +123,7 @@ export default function HomeScreen() {
                                 </Text>
                             </TouchableOpacity>
                             {/* Botão para remover o gasto */}
-                            <TouchableOpacity onPress={() => removerGasto(item)} style={styles.deletButton}>
+                            <TouchableOpacity onPress={() => removerGasto(item.id)} style={styles.deletButton}>
                                 <Text style={styles.actionText}>
                                     Excluir
                                 </Text>
