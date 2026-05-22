@@ -130,14 +130,14 @@ export default function HomeScreen() {
                             </TouchableOpacity>
                         </View>
 
-                        {/* Exibe o total gasto atualizado */}                                
-                        <Text style={styles.total}>
-                                Total Gasto: R$ {totalGasto}
-                        </Text>
-                        
                     </View>
                 )}
             />
+
+            {/* Exibe o total gasto atualizado */}                                
+            <Text style={styles.total}>
+                Total Gasto: R$ {totalGasto}
+            </Text>
 
         </View>
     );
